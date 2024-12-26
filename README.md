@@ -15,7 +15,8 @@
 - [ ] Pretrained weights of text-to-3D generation.
 - [ ] Pretrained weights of image-to-3D generation.
 
-# 🔧 Dependencies and Installation
+## ⚙️ Setup
+### 1. Dependencies and Installation
 We recommend using `Python>=3.10`, `PyTorch>=2.1.0`, and `CUDA>=12.1`.
 ```bash
 conda create --name tar3d python=3.10
@@ -39,6 +40,33 @@ pip install triton
 # Install other requirements
 pip install -r requirements.txt
 ```
+### 2. Downloading Datasets
+
+### 3. Downloading Checkpoints
+
+
+
+## ⚡ Quick Start
+
+### 1. Reconstructing a 3D Geometry with 3D VQ-VAE
+
+### 2. Text-to-3D Generation
+
+### 3. Image-to-3D Generation
+
+
+## 💻 Training
+### 1. Training 3D VQ-VAE
+
+### 2. Training Text-to-3D GPT
+
+### 3. Training Image-to-3D GPT
+
+
+## 💫 Evaluation
+### 1. 2D Evaluation (PSNR, SSIM, Clip-Score, LPIPS)
+
+### 2. 3D Evaluation (Chamfer Distance, F-Score)
 
 
 ## 🤗 Acknowledgements
@@ -48,7 +76,7 @@ We thank the authors of the following projects for their excellent contributions
 - [Michelangelo](https://github.com/NeuralCarver/Michelangelo/)
 - [InstantMesh](https://github.com/TencentARC/InstantMesh)
 - [OpenLRM](https://github.com/3DTopia/OpenLRM)
-
+- [3DShape2VecSet](https://github.com/1zb/3DShape2VecSet)
 
 
 ## :books: BibTeX
