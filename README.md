@@ -43,10 +43,10 @@ pip install triton
 pip install -r requirements.txt
 ```
 ### 2. Downloading Datasets
-[ShapeNetV2](https://drive.google.com/drive/folders/1UFPi_UklH5clWKxxeL1IsxfjdUfc7i4x)  
-[Objaverse](https://huggingface.co/datasets/allenai/objaverse)   
-[ULIP](https://huggingface.co/datasets/SFXX/ulip/tree/main)  
-[Objaverse_high_quality_uids]()
+- [ShapeNetV2](https://drive.google.com/drive/folders/1UFPi_UklH5clWKxxeL1IsxfjdUfc7i4x)  
+- [Objaverse](https://huggingface.co/datasets/allenai/objaverse)   
+- [ULIP](https://huggingface.co/datasets/SFXX/ulip/tree/main)  
+- [Objaverse_high_quality_uids]()
 
 ### 3. Downloading Checkpoints
 We are currently unable to access the ckpts stored on the aliyun space used during the internship.  
@@ -71,6 +71,8 @@ python run.py --gpt-type i23d
 ```
 python train_vqvae.py --base configs/vqvae3d.yaml --gpus 0,1,2,3,4,5,6,7 --num_nodes 1
 ```
+In practice, we first train the encoder and decoder of our VQ-VAE according to the scheme of VAE.   
+Then, we add the vector quantization codebook and fine-tune the entire VQ-VAE.
 
 
 ### 2. Training 3D GPT
@@ -105,7 +107,7 @@ python eval_3d.py
 
 We thank the authors of the following projects for their excellent contributions to 3D generative AI!
 
-- [LlamaGen](tps://github.com/FoundationVision/LlamaGen/)
+- [LlamaGen](https://github.com/FoundationVision/LlamaGen/)
 - [Michelangelo](https://github.com/NeuralCarver/Michelangelo/)
 - [InstantMesh](https://github.com/TencentARC/InstantMesh)
 - [OpenLRM](https://github.com/3DTopia/OpenLRM)
@@ -123,3 +125,4 @@ If you find TAR3D useful for your research and applications, please cite using t
   year={2025}
 }
 ```
+
