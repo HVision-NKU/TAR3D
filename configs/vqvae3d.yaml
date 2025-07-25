@@ -1,0 +1,97 @@
+model:
+  base_learning_rate: 5.0e-04
+  target: tar3d.tokenizer.tsal.sal_pl_module_vq.ShapeAsLatentPLModule
+  params:
+    module_cfg:
+      target: tar3d.tokenizer.tsal.sal_perceiver_vq.ShapeAsLatentPerceiver
+      params:
+        triplane_res: 32
+        embed_dim: 64
+        point_feats: 3   # normal
+        num_freqs: 8
+        include_pi: false
+        heads: 12
+        width: 768
+        z_dim: 16
+        num_encoder_layers: 8
+        num_decoder_layers: 16
+        use_ln_post: true
+        init_scale: 0.25
+        qkv_bias: false
+        use_checkpoint: true
+        flash: true
+
+    loss_cfg:
+      target: tar3d.tokenizer.tsal.loss.KLNearFar
+      params:
+        near_weight: 0.1
+        kl_weight: 0.001
+
+    optimizer_cfg:
+      optimizer:
+        target: torch.optim.AdamW
+        params:
+          betas: [0.9, 0.99]
+          eps: 1.e-6
+          weight_decay: 1.e-2
+
+      scheduler:
+        target: tar3d.tokenizer.utils.trainings.lr_scheduler.LambdaWarmUpCosineFactorScheduler
+        params:
+          warm_up_steps: 5000
+          f_start: 1.e-6
+          f_min: 1.e-3
+          f_max: 1.0
+
+data:
+  target: tar3d.dataset.vqvae.DataModuleFromConfig
+  params:
+    batch_size: 16
+    num_workers: 8
+    train:
+      target: tar3d.dataset.vqvae.ShapeNet
+      params:
+        dataset_folder: /cpfs01/user/zhangxuying/Datasets/ShapeNetV2
+        split: train
+        categories: null
+        sampling: true
+        num_samples: 20480
+        surface_sampling: true
+        pc_size: 81920
+    validation:
+      target: tar3d.dataset.vqvae.ShapeNet
+      params:
+        dataset_folder: /cpfs01/user/zhangxuying/Datasets/ShapeNetV2
+        split: val
+        sampling: false
+        surface_sampling: true
+        pc_size: 81920
+    test:
+      target: tar3d.dataset.vqvae.ShapeNet
+      params:
+        dataset_folder: /cpfs01/user/zhangxuying/Datasets/ShapeNetV2
+        split: test
+        sampling: false
+        surface_sampling: true
+        pc_size: 81920
+
+
+lightning:
+  modelcheckpoint:
+    params:
+      every_n_train_steps: 1000
+      monitor: 'train/near'
+      mode: 'min'
+      save_top_k: 5
+      save_last: true
+  callbacks: {}
+
+  trainer:
+    benchmark: true
+    max_epochs: -1
+    val_check_interval: 10000
+    num_sanity_val_steps: 0
+    accumulate_grad_batches: 1
+    check_val_every_n_epoch: null   # if not set this, validation does not run
+
+  use_half_precision: true

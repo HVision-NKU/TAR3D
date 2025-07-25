@@ -1,7 +1,7 @@
 # <p align=center> :fire: `TAR3D: Creating High-Quality 3D Assets via Next-Part Prediction`</p>
 
 
-![framework_img](figs/method.png)
+![framework_img](assets/method.png)
 <div align="center">
   
   [[Paper](https://arxiv.org/pdf/2412.16919)] &emsp; [[Project Page](https://zhangxuying1004.github.io/projects/TAR3D/)] &emsp;  [[Jittor Version]()]&emsp; [[Demo]()]   <br>
@@ -9,11 +9,13 @@
 </div>
 
 ## 🚩 **Todo List**
-- [ ] Source code of 3D VQVAE.
-- [ ] Source code of 3D GPT.
+- [x] Source code of 3D VQVAE.
+- [x] Source code of 3D GPT.
+- [x] Source code of 3D evaluation.
 - [ ] Pretrained weights of 3D reconstruction.
-- [ ] Pretrained weights of text-to-3D generation.
 - [ ] Pretrained weights of image-to-3D generation.
+- [ ] Pretrained weights of text-to-3D generation.
+
 
 ## ⚙️ Setup
 ### 1. Dependencies and Installation
@@ -41,38 +43,69 @@ pip install triton
 pip install -r requirements.txt
 ```
 ### 2. Downloading Datasets
+[ShapeNetV2](https://drive.google.com/drive/folders/1UFPi_UklH5clWKxxeL1IsxfjdUfc7i4x)  
+[Objaverse](https://huggingface.co/datasets/allenai/objaverse)   
+[ULIP](https://huggingface.co/datasets/SFXX/ulip/tree/main)  
+[Objaverse_high_quality_uids]()
 
 ### 3. Downloading Checkpoints
-
+We are currently unable to access the ckpts stored on the aliyun space used during the internship.  
+We will retrain a version as soon as possible.
 
 
 ## ⚡ Quick Start
 
 ### 1. Reconstructing a 3D Geometry with 3D VQ-VAE
+```
+python infer_vqvae.py
+```
 
-### 2. Text-to-3D Generation
-
-### 3. Image-to-3D Generation
+### 2. Conditional 3D Generation
+```
+python run.py --gpt-type i23d
+```
 
 
 ## 💻 Training
 ### 1. Training 3D VQ-VAE
+```
+python train_vqvae.py --base configs/vqvae3d.yaml --gpus 0,1,2,3,4,5,6,7 --num_nodes 1
+```
 
-### 2. Training Text-to-3D GPT
 
-### 3. Training Image-to-3D GPT
+### 2. Training 3D GPT
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 torchrun \
+--nnodes=1 \
+--nproc_per_node=8 \
+--node_rank=0 \
+--master_addr='127.0.0.1' \
+--master_port=29504 \
+train_gpt.py \
+--gpt-type i23d \
+--global-batch-size 8 "$@"
+
+```
+
 
 
 ## 💫 Evaluation
 ### 1. 2D Evaluation (PSNR, SSIM, Clip-Score, LPIPS)
+```
+python eval_2d.py
+```
 
 ### 2. 3D Evaluation (Chamfer Distance, F-Score)
+```
+python eval_3d.py
+```
 
 
 ## 🤗 Acknowledgements
 
 We thank the authors of the following projects for their excellent contributions to 3D generative AI!
 
+- [LlamaGen](tps://github.com/FoundationVision/LlamaGen/)
 - [Michelangelo](https://github.com/NeuralCarver/Michelangelo/)
 - [InstantMesh](https://github.com/TencentARC/InstantMesh)
 - [OpenLRM](https://github.com/3DTopia/OpenLRM)
@@ -83,11 +116,10 @@ We thank the authors of the following projects for their excellent contributions
 If you find TAR3D useful for your research and applications, please cite using this BibTeX:
 
 ```BibTeX
-@article{zhang2024tar3d,
+@inproceedings{zhang2025tar3d,
   title={TAR3D: Creating High-quality 3D Assets via Next-Part Prediction},
   author={Zhang, Xuying and Liu, Yutong and Li, Yangguang and Zhang, Renrui and Liu, Yufei and Wang, Kai, Ouyang, Wanli and Xiong, Zhiwei and Gao, Peng and Hou, Qibin and Cheng, Ming-Ming},
-  journal={arXiv preprint arXiv:2412.16919},
-  year={2024}
+  booktitle={Proceedings of IEEE International Conference on Computer Vision},
+  year={2025}
 }
 ```
-
