@@ -46,7 +46,7 @@ pip install -r requirements.txt
 - [ShapeNetV2](https://drive.google.com/drive/folders/1UFPi_UklH5clWKxxeL1IsxfjdUfc7i4x)  
 - [Objaverse](https://huggingface.co/datasets/allenai/objaverse)   
 - [ULIP](https://huggingface.co/datasets/SFXX/ulip/tree/main)  
-- [Objaverse_high_quality_uids]()
+- [Objaverse_high_quality_uids(10w)](https://raw.githubusercontent.com/HVision-NKU/TAR3D/refs/heads/main/Objaverse_high_quality_uids.txt)
 
 ### 3. Downloading Checkpoints
 We are currently unable to access the ckpts stored on the aliyun space used during the internship.  
