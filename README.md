@@ -12,6 +12,7 @@
 - [x] Source code of 3D VQVAE.
 - [x] Source code of 3D GPT.
 - [x] Source code of 3D evaluation.
+- [x] 10w uids of high-quality objaverse object.
 - [ ] Pretrained weights of 3D reconstruction.
 - [ ] Pretrained weights of image-to-3D generation.
 - [ ] Pretrained weights of text-to-3D generation.
