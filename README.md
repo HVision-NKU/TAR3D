@@ -18,6 +18,18 @@
 - [ ] Pretrained weights of text-to-3D generation.
 
 
+## :books: BibTeX
+If you find TAR3D useful for your research or applications, please give us a star and cite this paper:
+
+```BibTeX
+@inproceedings{zhang2025tar3d,
+  title={TAR3D: Creating High-quality 3D Assets via Next-Part Prediction},
+  author={Zhang, Xuying and Liu, Yutong and Li, Yangguang and Zhang, Renrui and Liu, Yufei and Wang, Kai, Ouyang, Wanli and Xiong, Zhiwei and Gao, Peng and Hou, Qibin and Cheng, Ming-Ming},
+  booktitle={Proceedings of IEEE International Conference on Computer Vision},
+  year={2025}
+}
+```
+
 ## ⚙️ Setup
 ### 1. Dependencies and Installation
 We recommend using `Python>=3.10`, `PyTorch>=2.1.0`, and `CUDA>=12.1`.
@@ -114,16 +126,4 @@ We thank the authors of the following projects for their excellent contributions
 - [OpenLRM](https://github.com/3DTopia/OpenLRM)
 - [3DShape2VecSet](https://github.com/1zb/3DShape2VecSet)
 
-
-## :books: BibTeX
-If you find TAR3D useful for your research and applications, please cite using this BibTeX:
-
-```BibTeX
-@inproceedings{zhang2025tar3d,
-  title={TAR3D: Creating High-quality 3D Assets via Next-Part Prediction},
-  author={Zhang, Xuying and Liu, Yutong and Li, Yangguang and Zhang, Renrui and Liu, Yufei and Wang, Kai, Ouyang, Wanli and Xiong, Zhiwei and Gao, Peng and Hou, Qibin and Cheng, Ming-Ming},
-  booktitle={Proceedings of IEEE International Conference on Computer Vision},
-  year={2025}
-}
-```
 
