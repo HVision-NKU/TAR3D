@@ -23,9 +23,10 @@ If you find TAR3D useful for your research or applications, please give us a sta
 
 ```BibTeX
 @inproceedings{zhang2025tar3d,
-  title={TAR3D: Creating High-quality 3D Assets via Next-Part Prediction},
-  author={Zhang, Xuying and Liu, Yutong and Li, Yangguang and Zhang, Renrui and Liu, Yufei and Wang, Kai, Ouyang, Wanli and Xiong, Zhiwei and Gao, Peng and Hou, Qibin and Cheng, Ming-Ming},
-  booktitle={Proceedings of IEEE International Conference on Computer Vision},
+  title={Tar3d: Creating high-quality 3d assets via next-part prediction},
+  author={Zhang, Xuying and Liu, Yutong and Li, Yangguang and Zhang, Renrui and Liu, Yufei and Wang, Kai and Ouyang, Wanli and Xiong, Zhiwei and Gao, Peng and Hou, Qibin and Cheng, Ming-Ming},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={5134--5145},
   year={2025}
 }
 ```
@@ -125,5 +126,6 @@ We thank the authors of the following projects for their excellent contributions
 - [InstantMesh](https://github.com/TencentARC/InstantMesh)
 - [OpenLRM](https://github.com/3DTopia/OpenLRM)
 - [3DShape2VecSet](https://github.com/1zb/3DShape2VecSet)
+
 
 
